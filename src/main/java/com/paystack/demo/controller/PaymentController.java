@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.paystack.demo.model.PaymentInfo;
 import com.paystack.demo.response.PaymentResponse;
 import com.paystack.demo.service.PaymentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/init")
-    public PaymentResponse initPayment(@RequestBody PaymentInfo paymentInfo) throws JsonProcessingException {
+    public PaymentResponse initPayment(@RequestBody @Valid PaymentInfo paymentInfo) throws JsonProcessingException {
         return paymentService.initPayment(paymentInfo);
     }
 }
